@@ -34,6 +34,10 @@ graph TD
 
 Confira o **Legacy Nexus** em ação: o robô realizando a extração e o Dashboard atualizando em tempo real.
 
+
+https://github.com/user-attachments/assets/6e3023ef-1837-423f-9788-1907170f4bff
+
+
 [![DashBoard](./prints/dashboard_beta.png)]
 
 [![Analise de Dados](./prints/analise_de_Dados_beta.png)]
