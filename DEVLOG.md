@@ -2,6 +2,23 @@
 
 Este documento registra a evolução técnica do **Legacy Nexus**, documentando as decisões de arquitetura e o roteiro de implementação do SaaS.
 
+## 📅 29/12/2025 - Início da Refatoração: SQLite (Adeus Excel)
+**Tipo:** `Refatoração de Core` | **Status:** 🚧 Em Andamento
+
+### 🔄 Mudança de Rota
+A partir de hoje, a arquitetura baseada em `.xlsx` foi **descontinuada**.
+Decidi reescrever a camada de dados para suportar o futuro SaaS e acesso via Web.
+
+### 🛠️ O Que Estou Fazendo Agora
+Estou substituindo toda a lógica de manipulação de planilhas (`openpyxl`/`pandas`) por comandos SQL diretos.
+
+1.  **Novo Banco:** Criando o arquivo `legacy_core.db` (SQLite).
+2.  **Nova Tabela:** Estruturando a tabela `vendas_contratos` com colunas tipadas (TEXT, REAL, INTEGER).
+3.  **Objetivo:** Garantir que o robô consiga inserir dados sem travar a leitura do Dashboard.
+
+---
+
+
 ## 🚧 Versão Atual: 1.0 (MVP)
 
 ### 📌 Situação Atual

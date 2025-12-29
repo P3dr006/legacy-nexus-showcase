@@ -66,7 +66,7 @@ Acompanhe os detalhes técnicos da evolução do projeto no DEVLOG.md.
 
 - [x] Dashboard básico
 
-- [ ] Migração para Banco de Dados SQL (Em planejamento para resolver conflitos de I/O)
+- [x] Migração para Banco de Dados SQL (Em planejamento para resolver conflitos de I/O)
 
 - [ ] Integração com WhatsApp
 
