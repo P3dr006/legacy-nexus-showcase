@@ -36,9 +36,9 @@ Confira o **Legacy Nexus** em ação: o robô realizando a extração e o Dashbo
 
 [![DashBoard](./prints/dashboard_beta.png)]
 
-[[Analise de Dados](./prints/analise_de_Dados_beta.png)]
+[![Analise de Dados](./prints/analise_de_Dados_beta.png)]
 
-[[Tabela Inteligente](./prints/tabela_inteligente_beta.png)]
+[![Tabela Inteligente](./prints/tabela_inteligente_beta.png)]
 
 ## 🛠️ Stack Tecnológica
 
