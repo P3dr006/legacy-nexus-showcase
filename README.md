@@ -49,18 +49,17 @@ graph LR
   Excel -->|Leitura Lenta| Dash[Dashboard V1]
 
   style Excel fill:#1D6F42,stroke:#333,stroke-width:2px,color:white
-
+```
 ## 📸 Demonstração
 
 Confira o **Legacy Nexus** em ação: o robô realizando a extração e o Dashboard atualizando em tempo real.
 
 
-https://github.com/user-attachments/assets/6e3023ef-1837-423f-9788-1907170f4bff
+https://github.com/user-attachments/assets/b2042647-fa48-4663-93f3-3fd0cf15471c
 
+[![DashBoard](./prints/dashboard.2.0.png)]
 
-![DashBoard](./prints/dashboard.2.0.png)
-
-![Analise de Dados](./prints/analise_comparativo_2.0.png)
+[![Analise de Dados](./prints/analise_comparativo_2.0.png)]
 
 
 ## 🛠️ Stack Tecnológica
