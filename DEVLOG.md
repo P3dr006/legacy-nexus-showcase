@@ -2,8 +2,24 @@
 
 Este documento registra a evolução técnica do **Legacy Nexus**, documentando as decisões de arquitetura e o roteiro de implementação do SaaS.
 
+## 📅 05/01/2026 - Central de Comando (Launcher)
+**Tipo:** `Nova Feature (UX)` | **Status:** 🚧 Em Desenvolvimento
+
+### 🎯 O Objetivo
+Para eliminar a necessidade de abrir terminais e digitar códigos manualmente, estou desenvolvendo uma Interface Gráfica (GUI) que servirá como o "Controle Remoto" de todo o ecossistema Legacy Nexus.
+
+### 🛠️ Funcionalidades do Launcher
+1.  **Terminal Embarcado:** Uma tela preta dentro da janela que mostra os logs do Robô em tempo real (prints do Python), dando feedback visual do progresso da extração.
+2.  **Botão "Executar Extração":** Dispara o `robo_main.py` em uma thread separada para não travar a interface.
+3.  **Botão "Abrir BI":** Inicia o servidor do Streamlit e abre o Dashboard no navegador automaticamente.
+
+### 🎨 Stack Visual
+Utilizando `customtkinter` para manter a identidade visual **Dark/Neon** do projeto, fugindo do visual padrão cinza do Windows.
+
+---
+
 ## 📅 04/01/2026 - Dashboard 3.0 & UX Avançada
-**Tipo:** `Refatoração de Interface (UI/UX)` | **Status:** 🚧 Em Andamento
+**Tipo:** `Refatoração de Interface (UI/UX)` | **Status:** ✅ Finalizado
 
 ### 📌 Contexto
 Com a migração para SQLite concluída e estável (v2.0), o foco agora é transformar os dados brutos em inteligência visual. O antigo painel era estático; o novo precisa ser uma ferramenta de decisão (BI).
