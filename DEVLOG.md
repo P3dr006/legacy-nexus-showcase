@@ -2,12 +2,32 @@
 
 Este documento registra a evolução técnica do **Legacy Nexus**, documentando as decisões de arquitetura e o roteiro de implementação do SaaS.
 
+## 📅 04/01/2026 - Dashboard 3.0 & UX Avançada
+**Tipo:** `Refatoração de Interface (UI/UX)` | **Status:** 🚧 Em Andamento
+
+### 📌 Contexto
+Com a migração para SQLite concluída e estável (v2.0), o foco agora é transformar os dados brutos em inteligência visual. O antigo painel era estático; o novo precisa ser uma ferramenta de decisão (BI).
+
+### 🛠️ O Que Estou Fazendo Agora
+Estou reescrevendo o `dashboard.py` focando em interatividade e estética "Cyberpunk/Clean".
+
+1.  **Filtros em Camadas:** Implementação de lógica de filtragem em 3 etapas (Porcentagem da Cota -> Faixa de Valor -> Tipo de Contrato).
+2.  **Visualização Rica:** Substituição de números crus por **Barras de Progresso** dentro da tabela de listagem.
+3.  **Engine de Comparação:** Criação de algoritmo para comparar performance temporal (Mês Atual vs. Mês Anterior ou Ano x Ano) com cálculo automático de Delta (%).
+4.  **Estética:** Aplicação de CSS personalizado para remover o visual padrão do Streamlit e aplicar identidade visual Neon/Dark.
+
+### ⏭️ Próximos Passos
+Integrar lógica de CRM (n8n + Evolution API) para agir sobre esses leads.
+
+---
+
+
 ## 📅 29/12/2025 - Início da Refatoração: SQLite (Adeus Excel)
-**Tipo:** `Refatoração de Core` | **Status:** 🚧 Em Andamento
+**Tipo:** `Refatoração de Core` | **Status:** ✅ Finalizado
 
 ### 🔄 Mudança de Rota
-A partir de hoje, a arquitetura baseada em `.xlsx` foi **descontinuada**.
-Decidi reescrever a camada de dados para suportar o futuro SaaS e acesso via Web.
+A arquitetura baseada em `.xlsx` foi descontinuada para evitar travamentos de leitura/escrita simultânea.
+Migrei 100% da camada de persistência para **SQLite3**.
 
 ### 🛠️ O Que Estou Fazendo Agora
 Estou substituindo toda a lógica de manipulação de planilhas (`openpyxl`/`pandas`) por comandos SQL diretos.
