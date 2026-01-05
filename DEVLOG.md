@@ -37,7 +37,31 @@ Integrar lógica de CRM (n8n + Evolution API) para agir sobre esses leads.
 
 ---
 
+## 🚀 Versão Atual: 2.0 (Desktop System)
 
+### 📌 Situação do Projeto
+O sistema atingiu a maturidade de arquitetura desktop. Não é mais dependente de arquivos Excel soltos.
+
+* **Interface:** Launcher Executável (`customtkinter`)
+* **Ingestão:** Robô Selenium (Headless) com logs no terminal visual.
+* **Persistência:** Banco de Dados Relacional (`SQLite`).
+* **Visualização:** Dashboard Interativo (`Streamlit` + `SAC`).
+
+### 📜 Histórico de Versões
+
+#### v1.0 (MVP Legacy) - *Descontinuada*
+* Baseada em Excel e execução via terminal de comando.
+* **Problema:** Conflitos de I/O e falta de interface amigável.
+
+#### v2.0 (Atual)
+* Baseada em SQL e Interface Gráfica Dedicada.
+* **Ganho:** Performance, Segurança de dados e UX Profissional.
+
+---
+
+<details>
+<summary>📂 <strong>Clique para ver o Histórico de 2025 (Versões Antigas)</strong></summary>
+<br>
 ## 📅 29/12/2025 - Início da Refatoração: SQLite (Adeus Excel)
 **Tipo:** `Refatoração de Core` | **Status:** ✅ Finalizado
 
@@ -55,9 +79,9 @@ Estou substituindo toda a lógica de manipulação de planilhas (`openpyxl`/`pan
 ---
 
 
-## 🚧 Versão Atual: 1.0 (MVP)
+## 🚧 Versão Atual: 1.0 (MVP)(finalizada)
 
-### 📌 Situação Atual
+### 📌 Situação 
 O sistema está estável e operacional.
 - **Ingestão:** O robô (Selenium) extrai dados do portal da seguradora com sucesso.
 - **Persistência:** Os dados são tratados via Pandas e salvos em uma planilha estruturada (`.xlsx`) local.
@@ -78,3 +102,4 @@ Para suportar o módulo de **Login de Clientes** e o **CRM de WhatsApp**, foi de
 - **Para:** Banco de Dados Relacional (`SQLite` inicialmente, preparado para `PostgreSQL`).
 
 *Status: Proximo passo a migração do código*
+</details>
