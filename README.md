@@ -96,7 +96,7 @@ Acompanhe a evolução técnica detalhada no [DEVLOG.md](./DEVLOG.md).
 
 - [x] **Fase 3:** Refatoração de UI/UX (Design System Dark/Neon)
 
-- [ ] **Fase 4:** Criação do Launcher Desktop (Central de Comando)
+- [x] **Fase 4:** Criação do Launcher Desktop (Central de Comando)
 
-- [ ] **Futuro:** Criação de leads para whatsapp.
+- [ ] **Futuro:** Criação de leads para whatsapp, ver desenvolvimento em [Nexus_CRM.md](./Nexus_CRM.md).
 
