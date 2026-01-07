@@ -55,6 +55,8 @@ graph LR
 Confira o **Legacy Nexus** em ação: o robô realizando a extração e o Dashboard atualizando em tempo real.
 
 
+https://github.com/user-attachments/assets/0f72fc10-b327-4e1f-bf03-47ac07802bea
+
 https://github.com/user-attachments/assets/b2042647-fa48-4663-93f3-3fd0cf15471c
 
 [![DashBoard](./prints/dashboard.2.0.png)]
