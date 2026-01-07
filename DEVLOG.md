@@ -3,18 +3,21 @@
 Este documento registra a evolução técnica do **Legacy Nexus**, documentando as decisões de arquitetura e o roteiro de implementação do SaaS.
 
 ## 📅 05/01/2026 - Central de Comando (Launcher)
-**Tipo:** `Nova Feature (UX)` | **Status:** 🚧 Em Desenvolvimento
+**Tipo:** `Nova Feature (UX)` | **Status:** ✅ Finalizado
 
 ### 🎯 O Objetivo
-Para eliminar a necessidade de abrir terminais e digitar códigos manualmente, estou desenvolvendo uma Interface Gráfica (GUI) que servirá como o "Controle Remoto" de todo o ecossistema Legacy Nexus.
+Centralizar a operação do ecossistema Legacy Nexus, eliminando a necessidade de terminais e comandos manuais. O Launcher atua como um "wrapper" (envelope) que gerencia os processos do Robô e do Dashboard.
 
-### 🛠️ Funcionalidades do Launcher
-1.  **Terminal Embarcado:** Uma tela preta dentro da janela que mostra os logs do Robô em tempo real (prints do Python), dando feedback visual do progresso da extração.
-2.  **Botão "Executar Extração":** Dispara o `robo_main.py` em uma thread separada para não travar a interface.
-3.  **Botão "Abrir BI":** Inicia o servidor do Streamlit e abre o Dashboard no navegador automaticamente.
+### 🛠️ Funcionalidades Entregues
+1.  **Terminal Embarcado:** Redirecionamento dos logs (`stdout`) do Python para uma caixa de texto na interface, com suporte a **UTF-8** (emojis e acentos) e auto-scroll.
+2.  **Execução Assíncrona:** O botão "Iniciar" dispara o robô em uma **Thread** separada usando `subprocess`, garantindo que a interface não trave durante a extração.
+3.  **Fluxo de Decisão (UX):**
+    * Ao finalizar, o sistema exibe um Pop-up: *"Deseja abrir o Dashboard?"*.
+    * Evita a abertura forçada de janelas e dá controle ao usuário.
+4.  **Feedback Visual:** Botões mudam de cor para indicar status (🟨 Executando / 🟩 Concluído).
 
 ### 🎨 Stack Visual
-Utilizando `customtkinter` para manter a identidade visual **Dark/Neon** do projeto, fugindo do visual padrão cinza do Windows.
+Desenvolvido em `customtkinter` com paleta **Dark/Matte** (Fosco) para reduzir o ofuscamento visual e manter a identidade Cyberpunk do projeto.
 
 ---
 
