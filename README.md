@@ -11,26 +11,34 @@ O **Legacy Nexus** evoluiu de uma automação simples para uma **Central de Oper
 
 O sistema elimina o trabalho manual de verificar portais de seguradoras, extraindo dados automaticamente e transformando-os em inteligência de negócios. A versão 2.0 introduz uma interface desktop (Launcher), persistência em banco de dados relacional e um Dashboard interativo com design de alta fidelidade.
 
-## ⚙️ Arquitetura da Solução (V2.0 - Atual)
+## ⚙️ Arquitetura da Solução (V2.0 - Ecosystem)
 
-O sistema abandonou planilhas (`.xlsx`) em favor de uma arquitetura robusta baseada em Banco de Dados e Interface Gráfica Dedicada:
+O projeto evoluiu de um script linear para uma **Arquitetura Modular Gerenciada**, onde o **Launcher (GUI)** atua como orquestrador de processos, garantindo que a extração de dados e a visualização de BI funcionem de forma assíncrona e estável.
+
+### 🧩 Diagrama de Componentes
 
 ```mermaid
 graph TD
-    User((Usuário)) -->|Clica| A[🖥️ Launcher Desktop]
+    %% Atores e Launcher
+    User((Usuario)) -->|Comanda| Launcher[🚀 Launcher Desktop\nCustomTkinter]
     
-    subgraph "Legacy Nexus System"
-    A -->|Dispara Thread| B[🤖 Nexus Bot RPA]
-    A -->|Inicia Servidor| E[📊 Dashboard Web]
+    %% O Launcher Gerencia os Processos
+    Launcher -->|Subprocess / Thread| Robo[🤖 Robô de Extração\nSelenium]
+    Launcher -->|Subprocess| Dash[📊 Dashboard BI & CRM\nStreamlit]
     
-    B -->|Scraping Selenium| Internet((Portal Seguradora))
-    B -->|Persistência SQL| C[(Legacy_Core.db)]
+    %% Fluxo de Dados do Robô
+    Robo <-->|HTTPS| Portal[☁️ Portal Seguradora]
+    Robo -->|SQL INSERT| DB[(🗄️ Legacy_Core.db\nSQLite3)]
     
-    C <-->|Leitura/Escrita| E
-    end
+    %% Fluxo de Dados do Dashboard
+    DB -->|SQL SELECT| Dash
+    
 
-    style C fill:#00ADB5,stroke:#333,stroke-width:2px,color:white
-    style A fill:#222831,stroke:#00ADB5,stroke-width:2px,color:white
+    
+    %% Estilização
+    style Launcher fill:#222831,stroke:#00ADB5,stroke-width:2px,color:white
+    style DB fill:#1E8449,stroke:#333,stroke-width:2px,color:white
+
 ```
 
 ## 📜 Evolução da Arquitetura (Histórico)
