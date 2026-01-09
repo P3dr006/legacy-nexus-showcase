@@ -98,5 +98,7 @@ Acompanhe a evolução técnica detalhada no [DEVLOG.md](./DEVLOG.md).
 
 - [x] **Fase 4:** Criação do Launcher Desktop (Central de Comando)
 
-- [ ] **Futuro:** Criação de leads para whatsapp, ver desenvolvimento em [Nexus_CRM.md](./Nexus_CRM.md).
+- [ ] **Fase 5:** Módulo CRM & Inteligência de Funil (Em Andamento)
+
+- [ ] **Fase 6:** Integração WhatsApp API 
 

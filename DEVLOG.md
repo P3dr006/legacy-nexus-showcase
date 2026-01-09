@@ -2,6 +2,22 @@
 
 Este documento registra a evolução técnica do **Legacy Nexus**, documentando as decisões de arquitetura e o roteiro de implementação do SaaS.
 
+## 📅 09/01/2026 - CRM Tático & Inteligência de Funil
+**Tipo:** `Nova Feature (Backend/BI)` | **Status:**  🚧 Em Desenvolviment
+### 🎯 O Objetivo
+Integrar a camada de dados financeiros (extraídos pelo robô) com uma camada de gestão comercial, permitindo que o usuário gerencie o ciclo de vida do cliente sem sair da aplicação.
+
+### 🛠️ Funcionalidades Entregues
+1.  **Auto-Sync Database:**
+    * Refatoração do `database.py` para injetar dados na tabela `clientes_crm` automaticamente sempre que um novo contrato é detectado pelo Robô.
+2.  **Dashboard de Funil (UI):**
+    * Implementação do gráfico `px.funnel` no Streamlit para visualização da conversão.
+    * Criação do KPI de **Churn Rate** (Taxa de Desistência) em tempo real.
+3.  **UX de Cadência:**
+    * Adição da barra de progresso "Dias Parado" na tabela de leads, calculada pela diferença entre `datetime.now()` e a `data_ultima_interacao`.
+
+---
+
 ## 📅 05/01/2026 - Central de Comando (Launcher)
 **Tipo:** `Nova Feature (UX)` | **Status:** ✅ Finalizado
 
