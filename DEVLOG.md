@@ -2,8 +2,41 @@
 
 Este documento registra a evolução técnica do **Legacy Nexus**, documentando as decisões de arquitetura e o roteiro de implementação do SaaS.
 
+
+---
+
 ## 📅 09/01/2026 - CRM Tático & Inteligência de Funil
-**Tipo:** `Nova Feature (Backend/BI)` | **Status:**  🚧 Em Desenvolviment
+**Tipo:** `Nova Feature (Backend/BI)` | **Status:**  🚧 Em Desenvolvimento
+
+### 🎯 Objetivo da Sprint
+Evoluir o sistema de um simples leitor de dados para uma plataforma de **Gestão de Relacionamento (CRM)**. O foco desta atualização é a introdução da interface de **Calendário Interativo**, permitindo o agendamento visual de *follow-ups* e controle de ciclo de vida do cliente.
+
+#### 📅 1. Interface de Calendário Intuitivo (Frontend)
+*Nova camada visual para gestão de tempo e prioridades.*
+* **Visualização Mensal:** Renderização de compromissos e datas de renovação.
+* **Drag-and-Drop:** Funcionalidade para arrastar Leads entre dias para reagendar contatos facilmente.
+* **Alertas Visuais:** Cores distintas para contratos "A Vencer", "Cobrança" e "Reunião".
+
+#### 🔄 2. Auto-Sync Database (Backend)
+*Integração automática entre Robô de Coleta e CRM.*
+* `database.py` refatorado: Injeção automática na tabela `clientes_crm` assim que um novo contrato é detectado.
+* Eliminação de cadastro manual de oportunidades.
+
+#### 📊 3. Inteligência de Funil (BI)
+*Novas métricas no Dashboard Streamlit.*
+* Componente `px.funnel`: Visualização gráfica da conversão (Visitante ➝ Lead ➝ Contrato).
+* **KPI de Churn:** Monitoramento em tempo real da taxa de desistência/cancelamento.
+
+#### 🤖 4. Monitor de Estagnação (Messaging)
+*Integração segura com WhatsApp via Evolution API.*
+* Envio automatizado de mensagens para Leads parados no funil.
+* **Humanização:** Algoritmo de delay e variação de texto para evitar bloqueios (Anti-Bot behavior).
+
+
+---
+
+## 📅 09/01/2026 - CRM Tático & Inteligência de Funil
+**Tipo:** `Nova Feature (Backend/BI)` | **Status:**  ✅ Finalizado
 ### 🎯 O Objetivo
 Integrar a camada de dados financeiros (extraídos pelo robô) com uma camada de gestão comercial, permitindo que o usuário gerencie o ciclo de vida do cliente sem sair da aplicação.
 
@@ -13,8 +46,9 @@ Integrar a camada de dados financeiros (extraídos pelo robô) com uma camada de
 2.  **Dashboard de Funil (UI):**
     * Implementação do gráfico `px.funnel` no Streamlit para visualização da conversão.
     * Criação do KPI de **Churn Rate** (Taxa de Desistência) em tempo real.
-3.  **UX de Cadência:**
-    * Adição da barra de progresso "Dias Parado" na tabela de leads, calculada pela diferença entre `datetime.now()` e a `data_ultima_interacao`.
+3.  **Monitor de Estagnação:** 
+    * Integração com a **Evolution API** para envio automatizado de mensagens.
+    * O sistema aplica tratamento de texto para evitar comportamento de bot, reduzindo riscos de bloqueio ou banimento do número do usuário.
 
 ---
 
@@ -56,13 +90,14 @@ Integrar lógica de CRM (n8n + Evolution API) para agir sobre esses leads.
 
 ---
 
-## 🚀 Versão Atual: 2.0 (Desktop System)
+## 🚀 Versão Atual: 2.2 (Desktop System)
 
 ### 📌 Situação do Projeto
-O sistema atingiu a maturidade de arquitetura desktop. Não é mais dependente de arquivos Excel soltos.
+O sistema evoluiu de um simples leitor de dados para um **Ecossistema de Gestão (CRM)**. A arquitetura desktop agora integra automação financeira com ferramentas de relacionamento e agendamento.
 
-* **Interface:** Launcher Executável (`customtkinter`)
-* **Ingestão:** Robô Selenium (Headless) com logs no terminal visual.
+* **Interface:** Launcher Executável (`customtkinter`) com terminal embarcado.
+* **Ingestão:** Robô Selenium (Headless) com logs visuais e *Auto-Sync*.
+* **Gestão:** Calendário Interativo e Funil de Vendas (CRM Tático).
 * **Persistência:** Banco de Dados Relacional (`SQLite`).
 * **Visualização:** Dashboard Interativo (`Streamlit` + `SAC`).
 
@@ -70,11 +105,23 @@ O sistema atingiu a maturidade de arquitetura desktop. Não é mais dependente d
 
 #### v1.0 (MVP Legacy) - *Descontinuada*
 * Baseada em Excel e execução via terminal de comando.
-* **Problema:** Conflitos de I/O e falta de interface amigável.
+* **Limitação:** Conflitos de I/O e falta de interface amigável.
 
-#### v2.0 (Atual)
-* Baseada em SQL e Interface Gráfica Dedicada.
+#### v2.0 (SQL Migration) - *Estável*
+* Migração completa de Excel para SQL e Interface Gráfica Dedicada.
 * **Ganho:** Performance, Segurança de dados e UX Profissional.
+
+#### v2.2 (CRM Tático) – *Atual*
+
+- **Criação do CRM**
+  - Sistema para adicionar usuários com status e marcação de data para envio de mensagens.
+  - Envio automático de mensagens e cobranças.
+  - Integração com calendário visual, sincronização automática e inteligência de churn.
+  - **Ganho:** Controle total do ciclo de vida do cliente (Lead ➝ Contrato).
+
+- **Dashboard Atualizado**
+  - Relatórios de status dos clientes, permitindo identificar em qual etapa ocorre a maior perda.
+  - Tratamento e consolidação de relatórios mensais.
 
 ---
 

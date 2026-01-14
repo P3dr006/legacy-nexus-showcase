@@ -98,7 +98,9 @@ Acompanhe a evolução técnica detalhada no [DEVLOG.md](./DEVLOG.md).
 
 - [x] **Fase 4:** Criação do Launcher Desktop (Central de Comando)
 
-- [ ] **Fase 5:** Módulo CRM & Inteligência de Funil (Em Andamento)
+- [x] **Fase 5:** Módulo CRM & Inteligência de Funil 
 
-- [ ] **Fase 6:** Integração WhatsApp API 
+- [x] **Fase 6:** Integração WhatsApp API
+
+- [ ] **Fase 7** Aprimoramento de interface e adições de funcionalidades.
 

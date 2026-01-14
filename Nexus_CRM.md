@@ -10,22 +10,28 @@ Transformar o sistema de um simples "leitor de dados" para uma ferramenta ativa 
 
 ---
 
+## 🛠️ Funcionalidades que Serão Entregues (Core CRM)
+
+### 1. 🔄 Auto-Sync (Sincronização Robô ↔ CRM)
+O sistema conta com uma *trigger lógica* no backend (`database.py`) responsável pela sincronização automática.
+- **Funcionamento:** Assim que o robô identifica um novo contrato no portal da seguradora, um *Lead* é criado automaticamente na tabela do CRM com o status `NOVO`.
+- **Benefício:** Elimina a necessidade de digitação manual. O consultor acessa o painel e os clientes do dia já estarão disponíveis.
+
+### 2. 📊 Análise de Funil de Vendas (Visualização Gráfica)
+Implementação de gráficos de funil utilizando **Plotly Funnel**, permitindo a identificação de gargalos no processo comercial.
+- **Mapeamento de Etapas:** Visualização clara do fluxo de conversão:  
+  `NOVO` → `EM NEGOCIAÇÃO` → `FECHADO`
+- **Detecção de Gargalos:** Possibilita identificar visualmente em qual etapa ocorre a maior perda ou estagnação de clientes.
+
+### 3. ⚠️ Indicadores de Risco (Churn & Estagnação)
+Sistema de monitoramento inteligente para reduzir perdas de vendas.
+- **Taxa de Desistência (Churn):** KPI automático responsável por calcular a porcentagem de clientes com status `PERDIDO`.
+- **Monitor de Estagnação:** Integração com a **Evolution API** para envio automatizado de mensagens.  
+  O sistema aplica tratamento de texto para evitar comportamento de bot, reduzindo riscos de bloqueio ou banimento do número do usuário.
+
+---
+
 ## 🛠️ Funcionalidades Que Serão Entregues (Core CRM)
-
-### 1. Auto-Sync (Sincronização Robô ↔ CRM)
-O sistema possui uma trigger lógica no Backend (`database.py`).
-* **Como funciona:** Assim que o robô identifica um novo contrato no portal da seguradora, ele cria automaticamente um "Lead" na tabela do CRM com status `NOVO`.
-* **Benefício:** Elimina a digitação manual. O consultor apenas abre o painel e os clientes do dia já estão lá.
-
-### 2. Análise de Funil de Vendas (Visualização Gráfica)
-Implementação de gráficos de funil (`Plotly Funnel`) para identificar gargalos.
-* **Mapeamento de Etapas:** O sistema plota visualmente a conversão: `NOVO` → `EM NEGOCIAÇÃO` → `FECHADO`.
-* **Detecção de Gargalos:** Permite ver visualmente onde o volume de clientes está travando.
-
-### 3. Indicadores de Risco (Churn & Stagnation)
-Algoritmos de alerta para evitar perda de vendas.
-* **Taxa de Desistência (Churn):** KPI automático que calcula a % de clientes marcados como `PERDIDO`.
-* **Monitor de Estagnação:** Uma barra de progresso ("Dias Parado") alerta visualmente quando um lead não recebe interação há mais de 7 dias.
 
 ---
 
