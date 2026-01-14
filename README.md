@@ -7,38 +7,44 @@
 > **Nota:** Este é um repositório de demonstração (Showcase). O código-fonte original é mantido em repositório privado para proteção de regras de negócio.
 
 ## 📋 Sobre o Projeto
-O **Legacy Nexus** evoluiu de uma automação simples para uma **Central de Operações (Command Center)** completa para gestão de consórcios.
 
-O sistema elimina o trabalho manual de verificar portais de seguradoras, extraindo dados automaticamente e transformando-os em inteligência de negócios. A versão 2.0 introduz uma interface desktop (Launcher), persistência em banco de dados relacional e um Dashboard interativo com design de alta fidelidade.
+O **Legacy Nexus** evoluiu de uma simples automação de tarefas para uma **Central de Operações (Command Center)** completa e integrada para gestão de consórcios.
 
-## ⚙️ Arquitetura da Solução (V2.0 - Ecosystem)
+O sistema atua como um "funcionário digital", eliminando o trabalho manual de verificar portais de seguradoras. Ele extrai dados automaticamente, valida duplicidades e os transforma em **Inteligência de Negócios (BI)** acionável.
 
-O projeto evoluiu de um script linear para uma **Arquitetura Modular Gerenciada**, onde o **Launcher (GUI)** atua como orquestrador de processos, garantindo que a extração de dados e a visualização de BI funcionem de forma assíncrona e estável.
+## ⚙️ Arquitetura da Solução (V2.2 - Nexus Ecosystem)
+
+O projeto evoluiu de um script linear para um **Ecossistema Integrado**. O **Launcher** continua orquestrando os processos, mas agora o fluxo de dados suporta operações de **CRM Tático** (Gestão) e **Mensageria Automatizada**, transformando o banco de dados em um hub central de leitura e escrita.
 
 ### 🧩 Diagrama de Componentes
 
 ```mermaid
 graph TD
     %% Atores e Launcher
-    User((Usuario)) -->|Comanda| Launcher[🚀 Launcher Desktop\nCustomTkinter]
+    User((Usuário)) -->|Comanda| Launcher[🚀 Launcher Desktop\nCustomTkinter]
+    User <-->|Gestão Visual / Calendar| Dash[📊 Dashboard & CRM\nStreamlit + Streamlit Calendar]
     
     %% O Launcher Gerencia os Processos
-    Launcher -->|Subprocess / Thread| Robo[🤖 Robô de Extração\nSelenium]
-    Launcher -->|Subprocess| Dash[📊 Dashboard BI & CRM\nStreamlit]
+    Launcher -->|Subprocess / Thread| Robo[🤖 Robô de Extração\nSelenium Headless]
+    Launcher -->|Subprocess| Dash
     
-    %% Fluxo de Dados do Robô
-    Robo <-->|HTTPS| Portal[☁️ Portal Seguradora]
-    Robo -->|SQL INSERT| DB[(🗄️ Legacy_Core.db\nSQLite3)]
+    %% Fluxo de Dados do Robô (Ingestão)
+    Robo <-->|HTTPS / Scraping| Portal[☁️ Portal Seguradora]
+    Robo -->|Auto-Sync / INSERT| DB[(🗄️ Legacy_Core.db\nSQLite3)]
     
-    %% Fluxo de Dados do Dashboard
-    DB -->|SQL SELECT| Dash
+    %% Fluxo de Dados do Dashboard (Gestão e BI)
+    DB <-->|SELECT / UPDATE| Dash
+    
+    %% Integrações Externas (Novidade v2.2)
+    Dash -.->|HTTPS / JSON| API[📱 Evolution API\nWhatsApp Gateway]
     
 
     
     %% Estilização
     style Launcher fill:#222831,stroke:#00ADB5,stroke-width:2px,color:white
     style DB fill:#1E8449,stroke:#333,stroke-width:2px,color:white
-
+    style Dash fill:#ff4b4b,stroke:#333,stroke-width:2px,color:white
+    style API fill:#25D366,stroke:#333,stroke-width:2px,color:white
 ```
 
 ## 📜 Evolução da Arquitetura (Histórico)
@@ -65,11 +71,9 @@ Confira o **Legacy Nexus** em ação: o robô realizando a extração e o Dashbo
 
 https://github.com/user-attachments/assets/0f72fc10-b327-4e1f-bf03-47ac07802bea
 
-https://github.com/user-attachments/assets/b2042647-fa48-4663-93f3-3fd0cf15471c
+https://github.com/user-attachments/assets/e649cc8a-1a09-47e1-8c85-c22ac06c5e75
 
-[![DashBoard](./prints/dashboard.2.0.png)]
-
-[![Analise de Dados](./prints/analise_comparativo_2.0.png)]
+https://github.com/user-attachments/assets/41918dc6-349c-42a0-9352-748599fcb6b3
 
 
 ## 🛠️ Stack Tecnológica
