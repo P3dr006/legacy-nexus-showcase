@@ -5,34 +5,39 @@ Este documento registra a evolução técnica do **Legacy Nexus**, documentando 
 
 ---
 
-## 📅 09/01/2026 - CRM Tático & Inteligência de Funil
-**Tipo:** `Nova Feature (Backend/BI)` | **Status:**  🚧 Em Desenvolvimento
+## 📅 (20/02/2026) - 🚀 Release: CRM Tático & Inteligência Webhook 
+
+**Tipo:** `Nova Feature (Backend/Integração)` | **Status:** 🚧 `Em Desenvolvimento`
 
 ### 🎯 Objetivo da Sprint
-Evoluir o sistema de um simples leitor de dados para uma plataforma de **Gestão de Relacionamento (CRM)**. O foco desta atualização é a introdução da interface de **Calendário Interativo**, permitindo o agendamento visual de *follow-ups* e controle de ciclo de vida do cliente.
+Evoluir o sistema de um simples disparador de mensagens para uma **Secretária Eletrônica Universal em Tempo Real (Webhook)**. O foco desta atualização é a introdução da escuta ativa via Evolution API, permitindo o autoatendimento fora de expediente, interpretação inteligente de datas e a captura automática de novos leads diretamente para o banco de dados.
 
-#### 📅 1. Interface de Calendário Intuitivo (Frontend)
-*Nova camada visual para gestão de tempo e prioridades.*
-* **Visualização Mensal:** Renderização de compromissos e datas de renovação.
-* **Drag-and-Drop:** Funcionalidade para arrastar Leads entre dias para reagendar contatos facilmente.
-* **Alertas Visuais:** Cores distintas para contratos "A Vencer", "Cobrança" e "Reunião".
+---
 
-#### 🔄 2. Auto-Sync Database (Backend)
-*Integração automática entre Robô de Coleta e CRM.*
-* `database.py` refatorado: Injeção automática na tabela `clientes_crm` assim que um novo contrato é detectado.
-* Eliminação de cadastro manual de oportunidades.
+### ✨ O que há de novo?
 
-#### 📊 3. Inteligência de Funil (BI)
-*Novas métricas no Dashboard Streamlit.*
-* Componente `px.funnel`: Visualização gráfica da conversão (Visitante ➝ Lead ➝ Contrato).
-* **KPI de Churn:** Monitoramento em tempo real da taxa de desistência/cancelamento.
+#### 🤖 1. Modo Vigilante Universal (Messaging)
+*Autoatendimento 24/7 integrado de forma ativa com o WhatsApp.*
+- **Recepção de Desconhecidos:** Capacidade de responder qualquer pessoa que entrar em contato fora do horário comercial (19h às 09h), independentemente de estar ou não no banco de dados.
+- **Trava de Memória (Anti-Spam):** Implementação da lista volátil `JA_RESPONDIDO_HOJE`, garantindo que o robô envie a mensagem de ausência apenas uma vez por cliente ao dia.
+- **Detecção de Intervenção Humana:** Validação do parâmetro `fromMe` para assegurar que o robô silencie automaticamente caso a operação manual assuma a conversa.
 
-#### 🤖 4. Monitor de Estagnação (Messaging)
-*Integração segura com WhatsApp via Evolution API.*
-* Envio automatizado de mensagens para Leads parados no funil.
-* **Humanização:** Algoritmo de delay e variação de texto para evitar bloqueios (Anti-Bot behavior).
+#### 🔄 2. Auto-Capture via Webhook (Backend)
+*Integração instantânea e captação orgânica de novos contatos.*
+- **Servidor de Escuta (Flask):** Transição do método de *Polling* para *Webhooks* (`messages.upsert`), zerando o atraso na recepção de mensagens da Evolution API.
+- **Injeção Automática de Leads:** Lógica de `INSERT OR IGNORE` que cadastra instantaneamente números desconhecidos no CRM como status `NOVO` e origem `WEBHOOK`.
+- **Auditoria Contínua:** Sistema de rotação de logs (`historico_log.txt`) que arquiva eventos automaticamente ao atingir 5MB, preservando a saúde do disco no servidor.
 
+#### 🧠 3. Inteligência de Agendamento (Lógica/NLP)
+*Processamento flexível de texto para marcação de retornos.*
+- **Identificação Flexível de Datas:** Algoritmo capaz de interpretar o texto do cliente (ex: *"amanhã"*, *"segunda"* ou *"20/02"*) e convertê-lo com precisão para o padrão SQL (`YYYY-MM-DD`).
+- **Auto-Sync de Status:** Atualização autônoma do lead no banco de dados para `AGENDADO_AUTO` assim que a intenção de data é confirmada no chat.
 
+#### 📊 4. Dashboard & Gestão Visual (Frontend/BI)
+*Novas métricas analíticas e rastreabilidade no Streamlit.*
+- **Destaque de Automação:** Identificação visual exclusiva (Cor Ciano e Ícone 🤖) nas tabelas e calendário para leads capturados e agendados pela inteligência do robô.
+- **Filtro de Origem:** Separação analítica entre leads extraídos do site e cadastros orgânicos (Manuais/WhatsApp) na aba de gestão de funil.
+- **Monitoramento Integrado:** Expansão da interface para visualização em tempo real dos logs do sistema (erros, conexões e mensagens) diretamente pela tela principal do BI.
 ---
 
 ## 📅 09/01/2026 - CRM Tático & Inteligência de Funil
